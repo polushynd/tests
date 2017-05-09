@@ -1,0 +1,93 @@
+group 'com'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+
+repositories {
+    maven { url 'http://server:8081/artifactory/remote-repos' }
+   
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
+    compile 'org.testng:testng:6.8.8'
+    compile 'org.jsoup:jsoup:1.7.2'
+    compile 'org.apache.xmlgraphics:batik-anim:1.7'
+    compile 'org.apache.xmlgraphics:batik-awt-util:1.7'
+    compile 'org.apache.xmlgraphics:batik-bridge:1.7'
+    compile 'org.apache.xmlgraphics:batik-codec:1.7'
+    compile 'org.apache.xmlgraphics:batik-css:1.7'
+    compile 'org.apache.xmlgraphics:batik-dom:1.7'
+    compile 'org.apache.xmlgraphics:batik-ext:1.7'
+    compile 'org.apache.xmlgraphics:batik-gui-util:1.7'
+    compile 'org.apache.xmlgraphics:batik-gvt:1.7'
+    compile 'org.apache.xmlgraphics:batik-parser:1.7'
+    compile 'org.apache.xmlgraphics:batik-rasterizer:1.7'
+    compile 'org.apache.xmlgraphics:batik-script:1.7'
+    compile 'org.apache.xmlgraphics:batik-squiggle:1.7'
+    compile 'org.apache.xmlgraphics:batik-svg-dom:1.7'
+    compile 'org.apache.xmlgraphics:batik-svggen:1.7'
+    compile 'org.apache.xmlgraphics:batik-swing:1.7'
+    compile 'org.apache.xmlgraphics:batik-transcoder:1.7'
+    compile 'org.apache.xmlgraphics:batik-util:1.7'
+    compile 'org.apache.xmlgraphics:batik-xml:1.7'
+    compile 'log4j:log4j:1.2.12'
+    compile 'log4j:log4j:1.2.17'
+    compile 'org.slf4j:slf4j-api:1.5.6'
+    compile 'org.slf4j:slf4j-jdk14:1.5.6'
+    compile 'org.apache.commons:commons-collections4:4.1'
+    compile 'org.apache.commons:commons-lang3:3.2.1'
+    compile 'commons-digester:commons-digester:1.7'
+    compile 'org.apache.commons:commons-compress:1.7'
+    compile 'ixia:resolver:1.0'
+    compile 'xerces:xercesImpl:2.9.0'
+    compile 'org.apache.pdfbox:pdfbox:1.8.6'
+    compile 'org.apache.poi:poi:3.15'
+    compile 'monte:CMYKDemo:0.7.7'
+    compile 'com.ixiasoft.cms.libraries:dtdparser:4.3.50'
+    compile 'net.sourceforge.jeuclid:jeuclid-core:3.1.9'
+    compile 'jaxen:jaxen:1.1.6'
+    compile 'net.imagej:ij:1.51g'
+    compile 'ixia:outputgeneratorcorba:1.0'
+    compile 'org.eclipse.swt.gtk.linux:x86:3.3.0-v3346'
+    compile 'ixia:compiler:0.8.19'
+    compile 'ixia:jacorb:1.0'
+    compile 'com.ixia:textmlserver:4.3.7.4237'
+    compile 'com.ixia:textmlservercorba:4.3.7.4237'
+    compile 'com.ixia:textmlservercorbaInterfaces:4.3.7.4237'
+    compile 'com.ixiasoft.cms.libraries:ixiasoft-utils:4.3.50'
+    compile 'commons-beanutils:commons-beanutils:1.7.0'
+    compile 'sikulixapi:sikulixapi:1.1.0'
+    compile 'ixia:cmsapi:1.0'
+    compile 'ixia:StringConfigurationReaders:1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}
+
+task testInt(type: Test) {
+    systemProperties System.properties
+    ignoreFailures = true
+    outputs.upToDateWhen { false }
+    useTestNG() {
+        suites 'testng.xml'
+
+    }
+}
+
+    task testMap(type: Test) {
+        systemProperties System.properties
+        ignoreFailures = true
+        outputs.upToDateWhen { false }
+        useTestNG() {
+            suites 'testngMap.xml'
+
+        }
+    }
+
+
